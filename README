@@ -1,0 +1,12 @@
+This is a neat little script to collect churn data from git (or any VCS) and allow you visualize it in a treemap.
+
+To collect basic churn data from git:
+        git log --numstat | grep "^[0-9]" > git_churn 
+
+You can also strip out whatever you don't want. For example, if we only wanted churn data for a Rails project's controllers:
+        git log --numstat | grep "^[0-9]" | grep "app/controllers" > git_churn_controllers
+
+Usage is easy.
+        cat your_git_churn | ./git_churn_treemap.rb -commits > html/gitchurn.json
+
+Then just open up the included treemap.html and BLAMMO! Treemaps...
